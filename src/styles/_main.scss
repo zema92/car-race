@@ -1,0 +1,12 @@
+@import 'foundation';
+
+@import 'reset', 'utility', 'layout', 'car/car-list';
+
+body {
+  background: $primary-color;
+  font-family: $body-font-family;
+}
+
+a, button {
+  cursor: pointer;
+}

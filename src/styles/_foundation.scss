@@ -1,0 +1,8 @@
+@import "../../node_modules/foundation-sites/scss/foundation";
+@import 'settings';
+@import '../../node_modules/foundation-sites/scss/global';
+@import '../../node_modules/foundation-sites/scss/grid/grid';
+@import "../../node_modules/foundation-sites/scss/components/reveal";
+@import '../../node_modules/foundation-sites/scss/components/dropdown-menu';
+
+@include foundation-grid();

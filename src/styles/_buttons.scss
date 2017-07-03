@@ -1,0 +1,40 @@
+.button {
+  @media print {
+    display: none;
+  }
+
+  display: inline-block;
+  border: none;
+  border-radius: $button-radius;
+  padding: $default-offset / 2 $default-offset;
+  line-height: $button-font-size;
+  text-align: center;
+  text-decoration: none;
+  font-size: $button-font-size;
+}
+
+.button--primary {
+  @extend .button;
+
+  margin-left: $default-offset;
+  background-color: $secondary-color;
+  color: $primary-color;
+
+  &:hover {
+    background-color: $primary-color;
+    color: $secondary-color;
+  }
+}
+
+.button--secondary {
+  @extend .button;
+
+  border: 1px solid $secondary-color;
+  background-color: $primary-color;
+  color: $secondary-color;
+
+  &:hover {
+    background-color: $secondary-color;
+    color: $primary-color;
+  }
+}
