@@ -7,11 +7,11 @@ export class Car {
   private _image: string;
 
   constructor(obj?: any) {
-    this._id = obj && obj._id || 0;
-    this._name = obj && obj._name || null;
-    this._description = obj && obj._description || null;
-    this._speed = obj && obj._speed || 0;
-    this._image = obj && obj._image || null;
+    this._id = obj && obj.id || 0;
+    this._name = obj && obj.name || null;
+    this._description = obj && obj.description || null;
+    this._speed = obj && obj.speed || 0;
+    this._image = obj && obj.image || null;
   }
 
   get id(): number {

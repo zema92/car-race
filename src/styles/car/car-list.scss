@@ -1,17 +1,38 @@
+$primary-color: #00ADC1;
+$app-offset: 40px;
+
+.title {
+  position: relative;
+  top: ($app-offset * 3) / 4;
+  left: $app-offset;
+  color: $primary-color;
+}
+
 .car {
   &--wrapper {
     display: inline-block;
-    width: 550px;
-    height: 300px;
+    margin: $app-offset / 4;
+    border: 1px solid #ccc;
+    width: 23.7%;
   }
 
   &--list {
     margin: 40px;
-    width: 100%;
-    background-color: $medium-gray;
+    background-color: #ffffff;
   }
 
   &--image {
+    display: block;
+    margin: auto;
+    width: 315px;
+    height: 220px;
     transform: scaleX(-1);
+    object-fit: contain;
+  }
+
+  &--name {
+    padding-bottom: $app-offset / 2;
+    text-align: center;
+    color: $primary-color;
   }
 }

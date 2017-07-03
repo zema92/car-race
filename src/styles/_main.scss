@@ -3,8 +3,9 @@
 @import 'reset', 'utility', 'layout', 'car/car-list';
 
 body {
-  background: $primary-color;
+  background-color: #f8f8f8;
   font-family: $body-font-family;
+  overflow-x: hidden;
 }
 
 a, button {
