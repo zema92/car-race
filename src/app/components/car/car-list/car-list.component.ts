@@ -9,13 +9,25 @@ import {CarService} from "../../../services/car.service";
 export class CarListComponent implements OnInit {
 
   public cars = [];
+  public searchResult = [];
 
   constructor (private carService: CarService) { }
 
   ngOnInit() {
     this.carService.cars.subscribe((cars) => {
       this.cars = cars;
+      this.searchResult = this.cars;
     });
     this.carService.getAllCars();
+  }
+
+  private filterCars(query: string): void {
+    this.searchResult = [];
+
+    this.cars.forEach((car) => {
+      if (car.name.startsWith(query) || car.name.toLowerCase().startsWith(query)) {
+        this.searchResult.push(car);
+      }
+    });
   }
 }

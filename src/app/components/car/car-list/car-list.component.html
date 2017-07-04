@@ -1,11 +1,17 @@
-<h1 class="title">
-  Choose cars for the race:
-</h1>
-<div class="car--list">
-  <div class="car--wrapper" *ngFor="let car of cars">
-    <div class="car">
-      <img class="car--image" src="{{car.image}}">
-      <h1 class="car--name">{{car.name}}</h1>
+<app-car-search (onSearch)="filterCars($event)"></app-car-search>
+<div *ngIf="searchResult.length !== 0">
+  <h1 class="title">
+    Choose cars for the race:
+  </h1>
+  <div class="car--list">
+    <div class="car--wrapper" *ngFor="let car of searchResult">
+      <div class="car">
+        <img class="car--image" src="{{car.image}}">
+        <h1 class="car--name">{{car.name}}</h1>
+      </div>
     </div>
   </div>
+</div>
+<div class="car--empty" *ngIf="searchResult.length === 0">
+  <h1>There are no cars available!</h1>
 </div>

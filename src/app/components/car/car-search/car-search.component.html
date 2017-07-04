@@ -1,0 +1,9 @@
+<div class="search">
+  <input
+    type="text"
+    class="search--input"
+    placeholder="Search for your racing car"
+    #searchInput
+    (keyup)="emitSearchQuery(searchInput.value)">
+  <img class="search--icon" src="../../../../assets/search.png">
+</div>
