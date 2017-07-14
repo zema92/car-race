@@ -1,0 +1,18 @@
+<div class="car--wrapper--race" *ngFor="let car of carsForRace; let index = index"
+     (mouseover)="showButton(index)"
+     (mouseleave)="hideButton()">
+  <div class="car__icon--wrapper" (click)="openConfirmationModal(car)">
+    <img
+      [style.display]="hoveredRow === index ? 'block': 'none'"
+      class="car__icon--delete" src="../../../../assets/delete-icon.png" alt="delete">
+  </div>
+  <div class="car__position car--start">{{index + 1}}</div>
+  <img class="car--race" src={{car.image}}>
+  <div class="car__position car--finish">Finish</div>
+</div>
+<app-confirmation-modal
+  *ngIf="openConfirmation"
+  [message]="confirmationMessage"
+  (closeConfirmationModal)="closeModal()"
+  (confirmed)="emitCarForRemoval($event)">
+</app-confirmation-modal>

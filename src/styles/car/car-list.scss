@@ -11,12 +11,25 @@ $app-offset: 40px;
 .car {
   height: 270px;
   color: #00ADC1;
-  
+
   &--wrapper {
     display: inline-block;
     margin: $app-offset / 4;
     border: 1px solid #ccc;
     width: 23.7%;
+
+    &--race {
+      position: relative;
+      top: $app-offset * 5 / 4;
+      left: $app-offset * 5 / 4;
+      border: 1px solid #ccc;
+      width: 80%;
+      min-height: 80px;
+    }
+
+    &--race:nth-last-child(1) {
+      margin-bottom: 50px;
+    }
   }
 
   &--list {
@@ -41,8 +54,71 @@ $app-offset: 40px;
 
   &--empty {
     position: relative;
-    top: 35px;
-    left: 40px;
+    top: $app-offset;
+    left: $app-offset;
     color: $primary-color;
+  }
+
+  &--race {
+    position: absolute;
+    margin-left: $app-offset / 4;
+    height: 100%;
+    width: 90px;
+    transform: scaleX(-1);
+    object-fit: contain;
+  }
+
+  &--track {
+    margin-left: $app-offset;
+  }
+
+  &__position {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 120px;
+  }
+
+  &--start {
+    left: 0;
+    border-right: 3px solid $primary-color;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 80px;
+    color: $primary-color;
+    font-size: 55px;
+  }
+
+  &--finish {
+    right: 0;
+    border-left: 3px solid $primary-color;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 80px;
+    color: $primary-color;
+    font-size: 30px;
+
+    &--icon {
+      width: 120px;
+      height: 80px;
+    }
+  }
+
+  &__icon {
+    &--wrapper {
+      position: absolute;
+      left: -30px;
+      width: 40px;
+      height: 80px;
+    }
+
+    &--delete {
+      display: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 20px;
+    }
   }
 }

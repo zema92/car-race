@@ -1,0 +1,92 @@
+.modal-bg {
+  @include reveal-overlay($modal-background);
+
+  position: fixed;
+  opacity: 0.9;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.modal-base {
+  @include reveal-modal-base;
+  @include absolute-center;
+  @include grid-column(2);
+
+  position: fixed;
+  width: auto;
+  min-width: rem-calc(250px);
+  padding: $default-offset * 2 $default-offset;
+}
+
+.modal-base--error {
+  text-align: center;
+}
+
+.modal__header {
+  text-align: center;
+
+  &--title {
+    color: $secondary-color;
+    font-size: rem-calc(30px);
+  }
+}
+
+.modal__content {
+  padding: $default-offset $default-offset 0 $default-offset;
+
+  &__select {
+    padding: $default-offset;
+  }
+
+  &__link {
+    padding: $default-offset $default-offset 0 $default-offset;
+    align-content: center;
+    text-align: center;
+
+    a {
+      text-align: center;
+      color: $primary-color;
+      font-size: rem-calc(20px);
+    }
+  }
+}
+
+.modal__footer {
+  text-align: center;
+
+  div {
+    padding-bottom: $default-offset / 4;
+  }
+
+  span {
+    color: $input-color;
+    font-size: rem-calc(12px);
+  }
+
+  a {
+    color: $secondary-color;
+    font-size: rem-calc(12px);
+  }
+}
+
+.modal__confirmation {
+  text-align: center;
+
+  a {
+    display: inline-block;
+    margin-top: $default-offset * 2;
+  }
+
+  a:first-child {
+    margin-right: $default-offset * 3;
+  }
+
+  a:last-child {
+    margin-left: $default-offset * 3;
+  }
+}
+
+.modal__error {
+  text-align: center;
+}
