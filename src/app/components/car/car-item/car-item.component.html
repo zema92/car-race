@@ -1,0 +1,16 @@
+<div class="car">
+  <div class="flipper">
+    <div class="front">
+      <img class="car--image" src="{{car.image}}">
+      <h1 class="car--name">{{car.name}}</h1>
+    </div>
+    <div class="back">
+      <div>
+        <p class="car--description">Description: {{car.description}}</p>
+        <p class="car--speed">Speed: {{car.speed}} km/h</p>
+      </div>
+      <img class="car--image-hovered" src="{{car.image}}">
+      <a class="car--pick" (click)="emitCar(car)">Pick car for race</a>
+    </div>
+  </div>
+</div>

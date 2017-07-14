@@ -5,10 +5,7 @@
   </h1>
   <div class="car--list">
     <div class="car--wrapper" *ngFor="let car of searchResult">
-      <div class="car">
-        <img class="car--image" src="{{car.image}}">
-        <h1 class="car--name">{{car.name}}</h1>
-      </div>
+      <app-car-item [car]="car" (picked)="pickCarForRace($event)"></app-car-item>
     </div>
   </div>
 </div>

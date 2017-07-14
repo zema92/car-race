@@ -9,6 +9,9 @@ $app-offset: 40px;
 }
 
 .car {
+  height: 270px;
+  color: #00ADC1;
+  
   &--wrapper {
     display: inline-block;
     margin: $app-offset / 4;

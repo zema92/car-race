@@ -30,4 +30,8 @@ export class CarListComponent implements OnInit {
       }
     });
   }
+
+  private pickCarForRace(event: any): void {
+    console.log(event);
+  }
 }
