@@ -5,11 +5,18 @@
   </h1>
   <div class="car--list">
     <div class="car--wrapper" *ngFor="let car of searchResult">
-      <app-car-item [car]="car" (picked)="pickCarForRace($event)"></app-car-item>
+      <app-car-item [car]="car"
+                    [raceStarted]="raceStarted"
+                    (picked)="pickCarForRace($event)">
+      </app-car-item>
     </div>
   </div>
 </div>
 <div class="car--empty" *ngIf="searchResult.length === 0">
   <h1>There are no cars available!</h1>
 </div>
-<app-car-track [carsForRace]="carsForRace" (carForRemoval)="removeCar($event)"></app-car-track>
+<app-car-track [carsForRace]="carsForRace"
+               (emitRaceStarted)="startedRace($event)"
+               (emitResetRace)="resetRace($event)"
+               (carForRemoval)="removeCar($event)">
+</app-car-track>

@@ -13,6 +13,7 @@ export class CarListComponent implements OnInit {
   public searchResult = [];
   public carsForRaceMap = new Map();
   public carsForRace = [];
+  public raceStarted = false;
 
   constructor (private carService: CarService) { }
 
@@ -50,5 +51,17 @@ export class CarListComponent implements OnInit {
     this.carsForRaceMap.forEach((carForRaceMap) => {
       this.carsForRace.push(carForRaceMap);
     });
+  }
+
+  private startedRace(isStartedRace: boolean) {
+    this.raceStarted = isStartedRace;
+  }
+
+  private resetRace(isResetRace: boolean): void {
+    if (isResetRace) {
+      this.raceStarted = false;
+      this.carsForRaceMap.clear();
+      this.carsForRace = [];
+    }
   }
 }

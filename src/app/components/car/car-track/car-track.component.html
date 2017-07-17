@@ -1,14 +1,29 @@
+<a class="btn btn--start"
+   *ngIf="carsForRace.length > 1 && !raceStarted"
+   (click)="startRace(carsForRace)"
+>Start race</a>
+<a class="btn btn--reset" *ngIf="raceStarted" (click)="resetRace()">Reset race</a>
 <div class="car--wrapper--race" *ngFor="let car of carsForRace; let index = index"
      (mouseover)="showButton(index)"
      (mouseleave)="hideButton()">
   <div class="car__icon--wrapper" (click)="openConfirmationModal(car)">
     <img
-      [style.display]="hoveredRow === index ? 'block': 'none'"
+      [style.display]="hoveredRow === index && !raceStarted ? 'block': 'none'"
       class="car__icon--delete" src="../../../../assets/delete-icon.png" alt="delete">
   </div>
   <div class="car__position car--start">{{index + 1}}</div>
-  <img class="car--race" src={{car.image}}>
-  <div class="car__position car--finish">Finish</div>
+  <img class="car--race"
+       [style.left]="raceStarted ? 'initial': '10px'"
+       [style.right]="raceStarted ? '10px': 'initial'"
+       src={{car.image}}>
+  <div class="car__position car--finish"
+       [style.background-color]="firstPlace === car ? '#FFD700': '#f3f3f3'"
+       [style.background-color]="secondPlace === car ? '#C0C0C0': '#f3f3f3'"
+       [style.background-color]="thirdPlace === car ? '#CD7F32': '#f3f3f3'"
+  >Finish</div>
+  <div *ngIf="firstPlace === car" class="car__place car__place--first">| place</div>
+  <div *ngIf="secondPlace === car" class="car__place car__place--second">|| place</div>
+  <div *ngIf="thirdPlace === car" class="car__place car__place--third">||| place</div>
 </div>
 <app-confirmation-modal
   *ngIf="openConfirmation"

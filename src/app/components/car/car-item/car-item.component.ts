@@ -11,6 +11,9 @@ export class CarItemComponent implements OnInit {
   @Input()
   public car: Car;
 
+  @Input()
+  public raceStarted: boolean;
+
   @Output()
   picked: EventEmitter<any> = new EventEmitter();
 

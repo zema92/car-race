@@ -10,7 +10,7 @@
         <p class="car--speed">Speed: {{car.speed}} km/h</p>
       </div>
       <img class="car--image-hovered" src="{{car.image}}">
-      <a class="car--pick" (click)="emitCar(car)">Pick car for race</a>
+      <a *ngIf="!raceStarted" class="car--pick" (click)="emitCar(car)">Pick car for race</a>
     </div>
   </div>
 </div>

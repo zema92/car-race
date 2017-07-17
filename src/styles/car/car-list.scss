@@ -66,6 +66,7 @@ $app-offset: 40px;
     width: 90px;
     transform: scaleX(-1);
     object-fit: contain;
+    z-index: 1;
   }
 
   &--track {
@@ -121,4 +122,22 @@ $app-offset: 40px;
       width: 20px;
     }
   }
+
+  &__place {
+    position: absolute;
+    right: -70px;
+    color: $primary-color;
+    vertical-align: middle;
+    line-height: 80px;
+  }
+}
+
+.btn {
+  position: relative;
+  top: $app-offset * 3 / 4;
+  left: $app-offset * 5 / 4;
+  background: $primary-color;
+  padding: 8px;
+  border-radius: 4px;
+  color: white;
 }
