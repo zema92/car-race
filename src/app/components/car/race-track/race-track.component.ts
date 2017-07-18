@@ -3,9 +3,9 @@ import {Car} from "../../../model/car.model";
 import {CarService} from "../../../services/car.service";
 
 @Component({
-  selector: 'app-car-track',
-  templateUrl: './car-track.component.html',
-  styleUrls: ['./car-track.component.scss']
+  selector: 'app-race-track',
+  templateUrl: './race-track.component.html',
+  styleUrls: ['./race-track.component.scss']
 })
 export class CarTrackComponent implements OnInit {
 
@@ -30,6 +30,8 @@ export class CarTrackComponent implements OnInit {
   public secondPlace: Car;
   public thirdPlace: Car;
   public raceStarted = false;
+  public state = 'inactive';
+  public carsFinished = [];
 
   constructor (private carService: CarService) { }
 
@@ -65,8 +67,25 @@ export class CarTrackComponent implements OnInit {
 
   private startRace(carsForRace: Array<Car>): void {
     this.raceStarted = true;
+    this.state = 'active';
     this.emitRaceStarted.emit(this.raceStarted);
-    const carsPlaces = Array.from(carsForRace);
+
+  }
+
+  private resetRace(): void {
+    this.raceStarted = false;
+    this.state = 'inactive';
+    this.emitResetRace.emit(true);
+    this.carsFinished = [];
+    this.firstPlace = null;
+    this.secondPlace = null;
+    this.thirdPlace = null;
+  }
+
+  private finishRace(event): void {
+    this.carsFinished.push(event);
+
+    const carsPlaces = Array.from(this.carsFinished);
     carsPlaces.sort(function(a, b) {
       return b.speed - a.speed;
     });
@@ -81,13 +100,5 @@ export class CarTrackComponent implements OnInit {
       this.secondPlace = carsPlaces[1];
       this.thirdPlace = carsPlaces[2];
     }
-  }
-
-  private resetRace(): void {
-    this.raceStarted = false;
-    this.emitResetRace.emit(true);
-    this.firstPlace = null;
-    this.secondPlace = null;
-    this.thirdPlace = null;
   }
 }

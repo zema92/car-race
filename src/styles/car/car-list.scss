@@ -20,7 +20,7 @@ $app-offset: 40px;
 
     &--race {
       position: relative;
-      top: $app-offset * 5 / 4;
+      top: $app-offset * 2;
       left: $app-offset * 5 / 4;
       border: 1px solid #ccc;
       width: 80%;
@@ -134,7 +134,7 @@ $app-offset: 40px;
 
 .btn {
   position: relative;
-  top: $app-offset * 3 / 4;
+  top: $app-offset * 6.5 / 4;
   left: $app-offset * 5 / 4;
   background: $primary-color;
   padding: 8px;

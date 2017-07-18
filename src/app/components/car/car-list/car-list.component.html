@@ -15,8 +15,8 @@
 <div class="car--empty" *ngIf="searchResult.length === 0">
   <h1>There are no cars available!</h1>
 </div>
-<app-car-track [carsForRace]="carsForRace"
+<app-race-track [carsForRace]="carsForRace"
                (emitRaceStarted)="startedRace($event)"
                (emitResetRace)="resetRace($event)"
                (carForRemoval)="removeCar($event)">
-</app-car-track>
+</app-race-track>
