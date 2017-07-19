@@ -13,11 +13,11 @@
   </div>
   <app-race-car [car]="car"
                 [index]="index"
-                [state]="state"
+                [raceStarted]="raceStarted"
                 [firstPlace]="firstPlace"
                 [secondPlace]="secondPlace"
                 [thirdPlace]="thirdPlace"
-                (emitCarFinished)="finishRace($event)"
+                (emitAnimationEndTarget)="finishRace($event)"
   ></app-race-car>
   <div *ngIf="firstPlace === car" class="car__place car__place--first">| place</div>
   <div *ngIf="secondPlace === car" class="car__place car__place--second">|| place</div>

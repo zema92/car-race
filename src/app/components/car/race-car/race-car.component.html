@@ -1,8 +1,8 @@
 <div>
   <div class="car__position car--start">{{index + 1}}</div>
-  <img class="car--race"
-       [@raceState]="state"
-       (@raceState.done)="raceFinished($event)"
+  <img class="car--race {{car.id}}"
+       [ngClass]="{'animated slideInLeft': raceStarted}"
+       [style.animation-duration]="raceStarted ? animationDuration : '0s'"
        src={{car.image}}>
   <div class="car__position car--finish"
        [style.background-color]="firstPlace === car ? '#FFD700': '#f3f3f3'"

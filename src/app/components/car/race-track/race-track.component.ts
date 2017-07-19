@@ -31,7 +31,7 @@ export class CarTrackComponent implements OnInit {
   public thirdPlace: Car;
   public raceStarted = false;
   public state = 'inactive';
-  public carsFinished = [];
+  public carsFinished = new Map();
 
   constructor (private carService: CarService) { }
 
@@ -69,36 +69,28 @@ export class CarTrackComponent implements OnInit {
     this.raceStarted = true;
     this.state = 'active';
     this.emitRaceStarted.emit(this.raceStarted);
-
   }
 
   private resetRace(): void {
     this.raceStarted = false;
     this.state = 'inactive';
     this.emitResetRace.emit(true);
-    this.carsFinished = [];
+    this.carsFinished.clear();
     this.firstPlace = null;
     this.secondPlace = null;
     this.thirdPlace = null;
   }
 
   private finishRace(event): void {
-    this.carsFinished.push(event);
-
-    const carsPlaces = Array.from(this.carsFinished);
-    carsPlaces.sort(function(a, b) {
-      return b.speed - a.speed;
+    this.carsForRace.forEach((carForRace) => {
+      if (carForRace.id === +event.classList[1]) {
+        this.carsFinished.set(carForRace.id, carForRace);
+      }
     });
 
-    if (carsPlaces.length === 2) {
-      this.firstPlace = carsPlaces[0];
-      this.secondPlace = carsPlaces[1];
-    }
-
-    if (carsPlaces.length >= 3) {
-      this.firstPlace = carsPlaces[0];
-      this.secondPlace = carsPlaces[1];
-      this.thirdPlace = carsPlaces[2];
-    }
+    const places = this.carsFinished.values();
+    this.firstPlace = places.next().value;
+    this.secondPlace = places.next().value;
+    this.thirdPlace = places.next().value;
   }
 }

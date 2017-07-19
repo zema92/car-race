@@ -141,3 +141,23 @@ $app-offset: 40px;
   border-radius: 4px;
   color: white;
 }
+
+.animated {
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(0, 0, 0) scaleX(-1);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(1410px, 0, 0) scaleX(-1);
+  }
+}
+
+.slideInLeft {
+  animation-name: slideInLeft;
+}

@@ -1,39 +1,25 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {Car} from "../../../model/car.model";
 import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
+  AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit,
+  Output
+} from '@angular/core';
+import {Car} from "../../../model/car.model";
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-race-car',
   templateUrl: './race-car.component.html',
-  styleUrls: ['./race-car.component.scss'],
-  animations: [
-    trigger('raceState', [
-      state('inactive',   style({
-        transform: 'scaleX(-1) translateX(0)'
-      })),
-      state('active',   style({
-        transform: 'scaleX(-1) translateX(-1410px)'
-      })),
-      transition('inactive => active', animate(`0.2s ease-in`))
-    ])
-  ]
+  styleUrls: ['./race-car.component.scss']
 })
-export class RaceCarComponent implements OnInit {
+export class RaceCarComponent implements OnInit, AfterViewInit {
 
   @Input()
   public car: Car;
 
   @Input()
-  public index: number;
+  public index: string;
 
   @Input()
-  public state;
+  public raceStarted: boolean;
 
   @Input()
   public firstPlace: Car;
@@ -45,14 +31,14 @@ export class RaceCarComponent implements OnInit {
   public thirdPlace: Car;
 
   @Output()
-  public emitCarFinished: EventEmitter<Car> = new EventEmitter();
+  public emitAnimationEndTarget: EventEmitter<any> = new EventEmitter();
 
   public animationDuration: string;
 
-  constructor() { }
+  constructor(private element: ElementRef) { }
 
   ngOnInit() {
-    this.animationDuration = `${(5 / this.car.speed) * 3600}s ease-in`;
+    this.animationDuration = `${(1 / this.car.speed) * 3600}s`;
     // console.log(this.animationDuration);
 
     // const bla = {
@@ -75,19 +61,34 @@ export class RaceCarComponent implements OnInit {
     // console.log(Reflect.getMetadata('annotations', RaceCarComponent));
     // console.log(result);
 
-    Reflect.getMetadata('annotations', RaceCarComponent)[0]
-      .animations[0].definitions.forEach((animationDecorator) => {
-      if (animationDecorator.hasOwnProperty('animation')) {
-        animationDecorator.animation.timings = this.animationDuration;
-        console.log(animationDecorator.animation.timings);
-      }
+    // Reflect.getMetadata('annotations', RaceCarComponent)[0]
+    //   .animations[0].definitions.forEach((animationDecorator) => {
+    //   if (animationDecorator.hasOwnProperty('animation')) {
+    //     animationDecorator.animation.timings = this.animationDuration;
+    //     console.log(animationDecorator.animation.timings);
+    //   }
+    // });
+  }
+
+  ngAfterViewInit(): void {
+    $('.car--race.1').one('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', () => {
+      this.emitAnimationEndTarget.emit(event.target);
+      });
+
+    $('.car--race.2').one('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', () => {
+      this.emitAnimationEndTarget.emit(event.target);
+    });
+
+    $('.car--race.3').one('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', () => {
+      this.emitAnimationEndTarget.emit(event.target);
+    });
+
+    $('.car--race.4').one('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', () => {
+      this.emitAnimationEndTarget.emit(event.target);
+    });
+
+    $('.car--race.5').one('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', () => {
+      this.emitAnimationEndTarget.emit(event.target);
     });
   }
-
-  private raceFinished(event: any): void {
-    if (event.toState === 'active') {
-      this.emitCarFinished.emit(this.car);
-    }
-  }
-
 }
